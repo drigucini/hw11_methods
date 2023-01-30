@@ -81,12 +81,13 @@ public class Main {
 
 
 
-    public static void getMessageIOS (int currentYear, int clientOS) {
-        if (clientOS == 0 && currentYear >= 2015) {
+    public static void getMessageIOS (int deviceYear, int clientOS) {
+        int currentYear = LocalDate.now().getYear();
+        if (clientOS == 0 && deviceYear == currentYear) {
             System.out.println("Download the app for iOS, following the link\n");
-        } else if (clientOS == 0 && currentYear < 2015) {
+        } else if (clientOS == 0 && deviceYear < currentYear) {
             System.out.println("Download the light version of the app for iOS, following the link\n");
-        } else if (clientOS == 1 && currentYear >= 2015) {
+        } else if (clientOS == 1 && deviceYear == currentYear) {
             System.out.println("Download the app for Android, following the link\n");
         } else {
             System.out.println("Download the light version of the app for Android, following the link\n");
@@ -96,8 +97,8 @@ public class Main {
     public static void task2 () {
         System.out.println("\nTask 2");
         int clientOS = 1; //type of software 1 - android, 0 - iOS
-        int currentYear = LocalDate.now().getYear();
-        getMessageIOS(currentYear, clientOS);
+        int deviceYear = 2023; //current device year
+        getMessageIOS(deviceYear, clientOS);
 
     }
 
